@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     List<Employee> findEmployeesByDepartmentId(Long departmentId);
+    List<Employee> findEmployeesByOrganizationId(Long organizationId);
 }

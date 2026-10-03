@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class employeeController {
+public class EmployeeController {
 
     private final EmployeeService employeeService;
 
-    public employeeController(EmployeeService employeeService) {
+    public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
 
@@ -38,8 +38,14 @@ public class employeeController {
     }
 
     @GetMapping("/department/{departmentId}")
-    public ResponseEntity<List<EmployeeResponse>> getEmployeeByDepartmentId(@PathVariable Long departmentId) {
+    public ResponseEntity<List<EmployeeResponse>> getEmployeesByDepartmentId(@PathVariable Long departmentId) {
         List<EmployeeResponse> response = employeeService.getEmployeesByDepartmentId(departmentId);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/organization/{organizationId}")
+    public ResponseEntity<List<EmployeeResponse>> getEmployeesByOrganizationId(@PathVariable Long organizationId) {
+        List<EmployeeResponse> response = employeeService.getEmployeesByOrganizationId(organizationId);
         return ResponseEntity.ok(response);
     }
 

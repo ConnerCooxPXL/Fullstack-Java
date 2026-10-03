@@ -39,6 +39,11 @@ public class EmployeeService {
         return toResponse(employees);
     }
 
+    public List<EmployeeResponse> getEmployeesByOrganizationId(Long organizationId) {
+        List<Employee> employees = employeeRepository.findEmployeesByOrganizationId(organizationId);
+        return toResponse(employees);
+    }
+
     private List<EmployeeResponse> toResponse(List<Employee> employees) {
         List<EmployeeResponse> employeeResponses = new ArrayList<>();
         for (Employee e : employees) {
